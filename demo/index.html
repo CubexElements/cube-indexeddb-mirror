@@ -1,39 +1,45 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>seed-element Demo</title>
-    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="../seed-element.html">
-  </head>
-  <body unresolved>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>fort-indexeddb-mirror Demo</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../fort-indexeddb-mirror.html">
+</head>
+<body unresolved>
 
-    <p>An example of <code>&lt;seed-element&gt;</code>:</p>
+<template id="t" is="dom-bind">
+  <fort-indexeddb-mirror session="" key="test-key"
+                         data="{{testData}}" persisted-data="{{testPersistedData}}"></fort-indexeddb-mirror>
+  <test-ele data="{{testData}}"></test-ele>
+  <div>Persisted: {{testPersistedData}}</div>
+</template>
 
-    <p>Make words! <button id="saybtn">Say Something</button></p>
-    <p>Make lasers! <button id="laserbtn">Fire lasers</button></p>
+<dom-module id="test-ele">
+  <template>
+    <div>Data: [[data]]</div>
+  </template>
+  <script>
+    Polymer(
+      {
+        is:         'test-ele',
+        properties: {
+          data: {type: Object, notify: true}
+        },
+        attached:   function ()
+                    {
+                      this._refresh();
+                      setInterval(this._refresh.bind(this), 2000);
+                    },
+        _refresh:   function ()
+                    {
+                      this.data = 'test ' + Math.random();
+                    }
+      }
+    );
+  </script>
+</dom-module>
 
-    <seed-element author='{"name": "Lord Meowser", "image": "http://lorempixel.com/g/300/200/cats/"}' fancy>
-      <h2>Hello seed-element</h2>
-    </seed-element>
-
-    <script>
-      var seedElement = document.querySelector('seed-element');
-
-      document.querySelector('#saybtn').addEventListener('click', function() {
-        alert(seedElement.sayHello('Hallo!'));
-      });
-
-      document.querySelector('#laserbtn').addEventListener('click', function() {
-        seedElement.fireLasers();
-      });
-
-      document.addEventListener("seed-element-lasers", function(e) {
-        console.log(e.detail.sound);
-      });
-
-    </script>
-
-  </body>
+</body>
 </html>
