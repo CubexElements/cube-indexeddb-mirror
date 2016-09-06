@@ -91,7 +91,26 @@ Example:
           /** @override */
           initializeStoredValue: function ()
                                  {
-                                   return Promise.resolve();
+                                   return this._getStoredValue('data').then(
+                                     function (data)
+                                     {
+                                       if(this.data == undefined)
+                                       {
+                                         this.syncToMemory(
+                                           function ()
+                                           {
+                                             if(this.data === undefined)
+                                             {
+                                               this.set('data', data);
+                                             }
+                                           }
+                                         );
+                                       }
+                                       return this._setStoredValue(
+                                         'data', this.data || this.zeroValue
+                                       );
+                                     }.bind(this)
+                                   );
                                  },
 
           __clientChanged: function (client)
