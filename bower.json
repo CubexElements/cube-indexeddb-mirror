@@ -1,5 +1,5 @@
 {
-  "name": "fort-indexeddb-mirror",
+  "name": "cube-indexeddb-mirror",
   "version": "1.0.0",
   "authors": [
     "Anonymous <anonymous@example.com>"
@@ -11,9 +11,9 @@
     "indexeddb"
   ],
   "private": true,
-  "main": "fort-indexeddb-mirror.html",
+  "main": "cube-indexeddb-mirror.html",
   "license": "MIT",
-  "homepage": "https://github.com/FortifiElements/fort-indexeddb-mirror/",
+  "homepage": "https://github.com/CubexElements/cube-indexeddb-mirror/",
   "ignore": [
     "/.*",
     "/test/",

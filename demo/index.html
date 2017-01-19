@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>fort-indexeddb-mirror Demo</title>
+  <title>cube-indexeddb-mirror Demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
-  <link rel="import" href="../fort-indexeddb-mirror.html">
+  <link rel="import" href="../cube-indexeddb-mirror.html">
 </head>
 <body unresolved>
 
 <template id="t" is="dom-bind">
-  <fort-indexeddb-mirror session="" key="test-key"
-                         data="{{testData}}" persisted-data="{{testPersistedData}}"></fort-indexeddb-mirror>
+  <cube-indexeddb-mirror session="" key="test-key"
+                         data="{{testData}}" persisted-data="{{testPersistedData}}"></cube-indexeddb-mirror>
   <test-ele data="{{testData}}"></test-ele>
   <div>Persisted: {{testPersistedData}}</div>
 </template>
